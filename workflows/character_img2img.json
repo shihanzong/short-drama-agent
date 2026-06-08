@@ -1,0 +1,16 @@
+{
+  "description": "Character consistency img2img workflow",
+  "nodes": {},
+  "inputs": {
+    "character_image": "character reference image",
+    "prompt": "positive prompt",
+    "negative_prompt": "negative prompt",
+    "seed": -1,
+    "steps": 20,
+    "cfg": 7.0,
+    "denoise": 0.65
+  },
+  "outputs": [
+    "image"
+  ]
+}

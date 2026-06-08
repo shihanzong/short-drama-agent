@@ -1,0 +1,14 @@
+{
+  "name": "anime",
+  "visual_style": "Japanese anime style, cel shaded, clean line art",
+  "palette": {
+    "highlight": "bright white",
+    "shadow": "soft lavender",
+    "accent": "vibrant coral #FF6B6B"
+  },
+  "lighting": "soft anime lighting, rim light",
+  "camera_angle": "dynamic anime composition",
+  "mood": "vibrant emotional",
+  "aspect_ratio": "9:16",
+  "negative_prompt": "ugly, deformed, noisy, blurry, realistic, photo, 3d render"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "",
+  "alias": [],
+  "age": "",
+  "gender": "",
+  "occupation": "",
+  "personality": {
+    "traits": [],
+    "strengths": [],
+    "weaknesses": [],
+    "quirks": []
+  },
+  "background": "",
+  "motivation": "",
+  "arc": {
+    "starting_state": "",
+    "ending_state": "",
+    "key_turning_points": []
+  },
+  "relationships": {},
+  "appearance": {
+    "face_description": "",
+    "hair": "",
+    "clothing_style": "",
+    "distinctive_features": ""
+  },
+  "voice": {
+    "tts_voice": "",
+    "tone": "",
+    "pace": ""
+  },
+  "catchphrases": [],
+  "prompt_tags": "",
+  "voice_mapping": {
+    "female_young": "zh-CN-XiaoxiaoNeural",
+    "female_middle": "zh-CN-XiaoyiNeural",
+    "male_young": "zh-CN-YunyangNeural",
+    "male_middle": "zh-CN-YunxiNeural",
+    "male_elderly": "zh-CN-LaomsUnNeural",
+    "child_female": "zh-CN-XiaomiaoNeural"
+  },
+  "series_metadata": {
+    "genre": "",
+    "total_episodes": 80,
+    "duration_per_episode": 180,
+    "visual_style": "cinematic_realistic",
+    "created_at": "",
+    "status": "planning"
+  }
+}

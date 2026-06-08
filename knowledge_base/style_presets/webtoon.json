@@ -1,0 +1,14 @@
+{
+  "name": "webtoon",
+  "visual_style": "Korean webtoon/donghwa style, digital painting, clean lines",
+  "palette": {
+    "highlight": "pastel pink",
+    "shadow": "cool gray",
+    "accent": "magenta #FF00FF"
+  },
+  "lighting": "soft diffused, bloom effect",
+  "camera_angle": "straight composition",
+  "mood": "romantic dreamy",
+  "aspect_ratio": "9:16",
+  "negative_prompt": "ugly, deformed, noisy, blurry, realistic photo, painting, watercolor"
+}

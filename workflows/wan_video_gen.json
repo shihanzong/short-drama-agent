@@ -1,0 +1,74 @@
+{
+  "1": {
+    "class_type": "ImageUpscaleWithModel",
+    "inputs": {
+      "upscale_model": "4x-UltraSharp",
+      "image": "input_keyframe_image"
+    }
+  },
+  "2": {
+    "class_type": "EmptyHunyuanLatentVideo",
+    "inputs": {
+      "width": 832,
+      "height": 480,
+      "length": 81,
+      "batch_size": 1
+    }
+  },
+  "3": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "4": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "conditioning": "text_conditioning",
+      "guider": "vacuum_guider"
+    }
+  },
+  "5": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": -1,
+      "steps": 30,
+      "cfg": 6.0,
+      "sampler": [
+        "3",
+        0
+      ],
+      "sigmas": [
+        "3",
+        1
+      ],
+      "latent_image": [
+        "2",
+        0
+      ]
+    }
+  },
+  "6": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "5",
+        0
+      ],
+      "vae": "hunyuan_vae"
+    }
+  },
+  "7": {
+    "class_type": "VHS_VideoCombine",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ],
+      "format": "video/h264-mp4",
+      "fps": 16,
+      "save_output": true,
+      "filename_prefix": "drama_video"
+    }
+  }
+}

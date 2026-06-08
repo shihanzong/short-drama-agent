@@ -1,0 +1,14 @@
+{
+  "name": "modern_minimal",
+  "visual_style": "modern minimal design, clean compositions, lots of white space",
+  "palette": {
+    "highlight": "white #FFFFFF",
+    "shadow": "charcoal #333333",
+    "accent": "teal #008080"
+  },
+  "lighting": "soft natural, diffused",
+  "camera_angle": "eye-level straight on",
+  "mood": "clean sophisticated",
+  "aspect_ratio": "9:16",
+  "negative_prompt": "ugly, deformed, noisy, cluttered, busy background, cartoon, anime"
+}

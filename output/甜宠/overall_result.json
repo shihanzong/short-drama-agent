@@ -1,0 +1,22 @@
+{
+  "genre": "甜宠",
+  "total_episodes": 3,
+  "episodes": [
+    {
+      "episode": 1,
+      "video_path": "",
+      "script_path": "output\\ep001\\script.md"
+    },
+    {
+      "episode": 2,
+      "video_path": "",
+      "script_path": "output\\ep002\\script.md"
+    },
+    {
+      "episode": 3,
+      "video_path": "",
+      "script_path": "output\\ep003\\script.md"
+    }
+  ],
+  "completed_at": "2026-06-08T03:13:15.794987"
+}

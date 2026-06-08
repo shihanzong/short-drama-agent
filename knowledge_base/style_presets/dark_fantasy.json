@@ -1,0 +1,14 @@
+{
+  "name": "dark_fantasy",
+  "visual_style": "dark fantasy art, painterly, rich textures",
+  "palette": {
+    "highlight": "ember orange",
+    "shadow": "deep purple",
+    "accent": "silver #C0C0C0"
+  },
+  "lighting": "moody, volumetric fog, torch light",
+  "camera_angle": "wide epic composition",
+  "mood": "dark atmospheric",
+  "aspect_ratio": "9:16",
+  "negative_prompt": "bright, colorful, cartoon, anime, cute, simple"
+}

@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-06-08T00:22:21.748021",
+  "total_series": 3,
+  "total_episodes": 9,
+  "total_production_time_seconds": 208.7,
+  "avg_seconds_per_episode": 23.2,
+  "series": [
+    {
+      "genre": "重生复仇",
+      "episodes_produced": 3,
+      "output_directory": "output\\重生复仇",
+      "quick_mode": true
+    },
+    {
+      "genre": "霸总",
+      "episodes_produced": 3,
+      "output_directory": "output\\霸总",
+      "quick_mode": true
+    },
+    {
+      "genre": "逆袭",
+      "episodes_produced": 3,
+      "output_directory": "output\\逆袭",
+      "quick_mode": true
+    }
+  ]
+}

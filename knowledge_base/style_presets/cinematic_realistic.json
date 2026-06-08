@@ -1,0 +1,14 @@
+{
+  "name": "cinematic_realistic",
+  "visual_style": "cinematic realistic photography, film grain, shallow depth of field",
+  "palette": {
+    "highlight": "warm gold #FFD700",
+    "shadow": "cool blue #4169E1",
+    "accent": "deep red #8B0000"
+  },
+  "lighting": "dramatic three-point",
+  "camera_angle": "cinematic wide angle",
+  "mood": "dramatic intense",
+  "aspect_ratio": "9:16",
+  "negative_prompt": "ugly, deformed, noisy, blurry, lowres, cartoon, anime, illustration"
+}

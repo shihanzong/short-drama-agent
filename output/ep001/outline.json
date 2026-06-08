@@ -1,0 +1,45 @@
+{
+  "title": "第1集：契约婚姻与醉酒乌龙",
+  "logline": "高冷总裁被迫与替身女友同居，醉酒后的意外亲密打破理智防线。",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "location": "顾言深豪宅客厅",
+      "time_of_day": "夜晚",
+      "summary": "苏浅因家族危机急需资金，顾言深提出“三年契约婚姻”。苏浅为救父签字，顾言深冷漠递上婚前协议，强调“互不干涉”。",
+      "characters_present": [
+        "顾言深",
+        "苏浅"
+      ],
+      "emotional_tone": "压抑、冷漠",
+      "duration_seconds": 45
+    },
+    {
+      "scene_number": 2,
+      "location": "顾言深卧室门口",
+      "time_of_day": "夜晚",
+      "summary": "苏浅搬入，发现顾言深生活极度自律。顾言深应酬归来，浑身酒气，踉跄中误将苏浅认作白月光（实则是苏浅的旧照相似），一把将苏浅拽入怀中深吻。",
+      "characters_present": [
+        "顾言深",
+        "苏浅"
+      ],
+      "emotional_tone": "紧张、暧昧",
+      "duration_seconds": 60
+    },
+    {
+      "scene_number": 3,
+      "location": "顾言深卧室",
+      "time_of_day": "清晨",
+      "summary": "苏浅惊醒，发现自己在顾言深床上。顾言深已穿戴整齐准备出门，神情恢复高冷，但耳根微红。他扔给苏浅一张黑卡：“这是给你的零花钱，别自作多情。”",
+      "characters_present": [
+        "顾言深",
+        "苏浅"
+      ],
+      "emotional_tone": "尴尬、疑惑",
+      "duration_seconds": 40
+    }
+  ],
+  "cliffhanger": "苏浅捡起黑卡，发现背面写着一行小字：“昨晚……对不起。”与此同时，顾言深的手机亮起，林婉儿发来一张顾言深抱着“苏浅”的照片。",
+  "hook_score": 9,
+  "episode_number": 1
+}

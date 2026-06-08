@@ -1,0 +1,11 @@
+{
+  "episode": 4,
+  "genre": "重生复仇",
+  "outline_path": "output\\ep004\\outline.json",
+  "script_path": "output\\ep004\\script.md",
+  "storyboard_path": "output\\ep004\\storyboard.json",
+  "images_dir": "output\\ep004\\images",
+  "audio_files": [],
+  "video_path": "",
+  "publishing": {}
+}

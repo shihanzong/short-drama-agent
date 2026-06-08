@@ -1,0 +1,16 @@
+{
+  "description": "Scene background generation workflow",
+  "nodes": {},
+  "inputs": {
+    "prompt": "scene description",
+    "negative_prompt": "negative prompt",
+    "seed": -1,
+    "steps": 24,
+    "cfg": 8.0,
+    "width": 576,
+    "height": 1024
+  },
+  "outputs": [
+    "image"
+  ]
+}

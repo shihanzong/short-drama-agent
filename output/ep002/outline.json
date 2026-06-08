@@ -1,0 +1,49 @@
+{
+  "title": "第2集：豪门晚宴的公开处刑",
+  "logline": "反派林婉儿设局羞辱，男主却在众目睽睽之下强势护妻。",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "location": "高端慈善晚宴现场",
+      "time_of_day": "夜晚",
+      "summary": "苏浅首次以顾太太身份亮相，被林婉儿故意撞洒红酒，林婉儿假装无辜，周围名媛窃窃私语嘲笑苏浅是“暴发户配不上总裁”。",
+      "characters_present": [
+        "苏浅",
+        "林婉儿",
+        "顾言深",
+        "群众"
+      ],
+      "emotional_tone": "屈辱、愤怒",
+      "duration_seconds": 50
+    },
+    {
+      "scene_number": 2,
+      "location": "宴会厅中央",
+      "time_of_day": "夜晚",
+      "summary": "林婉儿煽动舆论，暗示苏浅是靠身体上位。顾言深出现，全场安静。他并未直接反驳，而是脱下高定西装外套，蹲下身为苏浅擦拭裙摆，动作温柔至极。",
+      "characters_present": [
+        "顾言深",
+        "苏浅",
+        "林婉儿"
+      ],
+      "emotional_tone": "震惊、甜宠",
+      "duration_seconds": 60
+    },
+    {
+      "scene_number": 3,
+      "location": "宴会厅出口",
+      "time_of_day": "夜晚",
+      "summary": "顾言深冷冷扫视林婉儿：“顾家太太的裙子，轮不到别人指手画脚。”随后牵起苏浅的手离开，留下林婉儿脸色铁青。",
+      "characters_present": [
+        "顾言深",
+        "苏浅",
+        "林婉儿"
+      ],
+      "emotional_tone": "爽快、暗流涌动",
+      "duration_seconds": 30
+    }
+  ],
+  "cliffhanger": "回到车上，苏浅质问顾言深为何突然改变态度。顾言深突然凑近，眼神晦暗：“因为我想让你知道，在这个家里，只有我能欺负你。”此时，林婉儿在暗处拨通电话：“计划通，他越宠，摔得越惨。”",
+  "hook_score": 8,
+  "episode_number": 2
+}

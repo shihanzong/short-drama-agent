@@ -1,0 +1,49 @@
+{
+  "2026_trends": {
+    "date": "2026-06",
+    "trending_genres": [
+      {
+        "genre": "重生复仇",
+        "score": 95,
+        "growth": "+15%",
+        "peak_time": "18-22点"
+      },
+      {
+        "genre": "霸总甜宠",
+        "score": 92,
+        "growth": "+8%",
+        "peak_time": "20-24点"
+      },
+      {
+        "genre": "战神逆袭",
+        "score": 90,
+        "growth": "+12%",
+        "peak_time": "18-22点"
+      },
+      {
+        "genre": "悬疑反转",
+        "score": 85,
+        "growth": "+20%",
+        "peak_time": "12-14点, 20-22点"
+      },
+      {
+        "genre": "甜宠日常",
+        "score": 82,
+        "growth": "+5%",
+        "peak_time": "20-24点"
+      }
+    ],
+    "hot_formats": [
+      "竖屏短剧 1-3分钟/集",
+      "80-100集微短剧",
+      "互动式选择分支",
+      "AI生成+真人混剪"
+    ],
+    "monetization": [
+      "付费解锁",
+      "广告分成",
+      "品牌植入",
+      "IP改编"
+    ]
+  }
+}

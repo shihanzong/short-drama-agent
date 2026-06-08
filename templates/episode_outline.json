@@ -1,0 +1,22 @@
+{
+  "episode_number": 0,
+  "title": "",
+  "logline": "",
+  "conflict": "",
+  "resolution": "",
+  "cliffhanger": "",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "location": "",
+      "time_of_day": "day/night",
+      "summary": "",
+      "characters_present": [],
+      "emotional_tone": "",
+      "key_action": "",
+      "duration_seconds": 30
+    }
+  ],
+  "hook_score": 0,
+  "retention_risk": []
+}

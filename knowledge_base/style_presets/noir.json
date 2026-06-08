@@ -1,0 +1,14 @@
+{
+  "name": "noir",
+  "visual_style": "film noir, high contrast black and white photography",
+  "palette": {
+    "highlight": "pure white",
+    "shadow": "deep black",
+    "accent": "amber #FFBF00"
+  },
+  "lighting": "chiaroscuro, venetian blind shadows",
+  "camera_angle": "low angle dramatic",
+  "mood": "mysterious suspenseful",
+  "aspect_ratio": "9:16",
+  "negative_prompt": "color, bright, cheerful, cartoon, anime, illustration"
+}

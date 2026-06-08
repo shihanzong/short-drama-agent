@@ -1,0 +1,47 @@
+{
+  "title": "第3集：误会升级与禁欲失控",
+  "logline": "精心策划的“捉奸”视频引爆热搜，男主却当众宣布主权。",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "location": "公司办公室",
+      "time_of_day": "白天",
+      "summary": "林婉儿买通媒体，放出顾言深与一神秘女子（实则是顾言深的私人医生，正在处理苏浅过敏）在酒店房间的视频，标题耸动：“顾总夜会红颜，新婚夜弃妻”。苏浅看到新闻，心灰意冷收拾行李准备离开。",
+      "characters_present": [
+        "苏浅",
+        "顾言深"
+      ],
+      "emotional_tone": "绝望、焦急",
+      "duration_seconds": 50
+    },
+    {
+      "scene_number": 2,
+      "location": "机场VIP通道",
+      "time_of_day": "白天",
+      "summary": "苏浅即将登机，顾言深满身疲惫地赶来，手里拿着一份鉴定报告（证明视频是伪造的）。他拦住苏浅，不再维持高冷形象，声音颤抖：“苏浅，别走，信我一次。”",
+      "characters_present": [
+        "顾言深",
+        "苏浅"
+      ],
+      "emotional_tone": "深情、崩溃边缘",
+      "duration_seconds": 60
+    },
+    {
+      "scene_number": 3,
+      "location": "机场大厅",
+      "time_of_day": "白天",
+      "summary": "林婉儿带着记者赶到，企图直播顾言深“出轨”证据。顾言深当众将苏浅拉入怀中，对着镜头宣布：“她是我顾言深唯一的妻子，谁敢造谣，顾家法务部见。”",
+      "characters_present": [
+        "顾言深",
+        "苏浅",
+        "林婉儿",
+        "记者"
+      ],
+      "emotional_tone": "霸气、高燃",
+      "duration_seconds": 45
+    }
+  ],
+  "cliffhanger": "苏浅感动正要答应，顾言深的手机突然响起，来电显示“林婉儿”。他接通后，林婉儿的声音通过外放传来：“顾总，你太太的‘过敏药’里，可是加了让我怀孕的药哦……”顾言深脸色骤变，死死盯住苏浅。",
+  "hook_score": 10,
+  "episode_number": 3
+}

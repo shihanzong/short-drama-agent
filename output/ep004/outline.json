@@ -1,0 +1,57 @@
+{
+  "title": "第4集：商业围剿",
+  "logline": "沈清秋联合外部资本，切断顾氏资金链，顾延之发现妻子早已掌控全局。",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "location": "沈氏集团会议室",
+      "time_of_day": "白天",
+      "summary": "沈清秋以总裁身份回归，利用前世记忆，精准预判市场波动，反向收购顾氏旗下亏损项目。董事会成员震惊于她的果断与眼光。",
+      "characters_present": [
+        "沈清秋",
+        "董事会成员"
+      ],
+      "emotional_tone": "霸气/专业",
+      "duration_seconds": 40
+    },
+    {
+      "scene_number": 2,
+      "location": "顾氏集团财务室",
+      "time_of_day": "白天",
+      "summary": "顾延之发现账户被冻结，银行拒绝放款。他疯狂打电话求助，却发现所有盟友都在推脱。他意识到，是沈清秋在背后搞鬼。",
+      "characters_present": [
+        "顾延之",
+        "财务经理"
+      ],
+      "emotional_tone": "焦虑/恐惧",
+      "duration_seconds": 35
+    },
+    {
+      "scene_number": 3,
+      "location": "高档餐厅",
+      "time_of_day": "夜晚",
+      "summary": "顾延之约见沈清秋，试图用感情和女儿（如果有）或共同利益挽回局面。沈清秋优雅地切着牛排，淡淡说出顾氏未来的破产倒计时，并展示了一份离婚协议书，条件极其苛刻。",
+      "characters_present": [
+        "沈清秋",
+        "顾延之"
+      ],
+      "emotional_tone": "对峙/压迫",
+      "duration_seconds": 45
+    },
+    {
+      "scene_number": 4,
+      "location": "顾延之豪车车内",
+      "time_of_day": "夜晚",
+      "summary": "顾延之拒绝签字，愤怒地威胁要毁掉沈清秋。沈清秋冷笑，拿出手机播放顾延之与林婉儿合谋制造车祸的录音。顾延之脸色煞白。",
+      "characters_present": [
+        "沈清秋",
+        "顾延之"
+      ],
+      "emotional_tone": "惊悚/决裂",
+      "duration_seconds": 30
+    }
+  ],
+  "cliffhanger": "顾延之失控掐住沈清秋的脖子，就在千钧一发之际，沈清秋按下了遥控器，顾延之的车刹车失灵，车头猛冲向悬崖护栏！",
+  "hook_score": 10,
+  "episode_number": 4
+}

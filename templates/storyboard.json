@@ -1,0 +1,28 @@
+{
+  "episode_number": 0,
+  "episode_title": "",
+  "total_shots": 0,
+  "shots": [
+    {
+      "shot_number": 1,
+      "scene_number": 1,
+      "shot_type": "close-up/medium/wide/over-shoulder",
+      "camera_angle": "eye-level/low-angle/high-angle/dutch",
+      "camera_movement": "static/pan-tilt-zoom/dolly/tracking",
+      "visual_description": "",
+      "prompt_text": "",
+      "negative_prompt": "",
+      "reference_images": [],
+      "audio": {
+        "dialogue": "",
+        "bgm_mood": "",
+        "sfx": [],
+        "silence_seconds": 0
+      },
+      "duration_seconds": 4,
+      "transition_in": "fade-in/slide-in/cut",
+      "transition_out": "fade-out/slide-out/cut",
+      "motion_direction": ""
+    }
+  ]
+}

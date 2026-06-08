@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI短剧生产系统</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --bg2: #1a1d27;
+  --bg3: #242836;
+  --border: #2d3148;
+  --text: #e4e6f0;
+  --text2: #8b8fa3;
+  --accent: #6c5ce7;
+  --accent2: #a29bfe;
+  --green: #00cec9;
+  --red: #ff6b6b;
+  --orange: #fdcb6e;
+  --radius: 10px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+a { color: var(--accent2); text-decoration: none; }
+
+/* Layout */
+.header {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.header .version {
+  font-size: 12px;
+  color: var(--text2);
+  background: var(--bg3);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  background: var(--bg2);
+  border-radius: var(--radius);
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  color: var(--text2);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--text); background: var(--bg3); }
+.tab-btn.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 2px 10px rgba(108, 92, 231, 0.4);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Cards */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card h3 .icon { font-size: 20px; }
+
+/* Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+  font-size: 13px;
+  color: var(--text2);
+  font-weight: 500;
+}
+.form-group select, .form-group input {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-group select:focus, .form-group input:focus {
+  border-color: var(--accent);
+}
+.form-group select[multiple] {
+  height: 160px;
+  font-size: 13px;
+}
+.form-group select option {
+  padding: 6px 10px;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+.btn-primary:hover { background: #5a4bd6; box-shadow: 0 4px 15px rgba(108,92,231,0.4); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-secondary {
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-sm { padding: 6px 12px; font-size: 12px; }
+.btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin: 2px;
+}
+.tag-green { background: rgba(0,206,201,0.15); color: var(--green); }
+.tag-purple { background: rgba(108,92,231,0.15); color: var(--accent2); }
+.tag-orange { background: rgba(253,203,110,0.15); color: var(--orange); }
+.tag-red { background: rgba(255,107,107,0.15); color: var(--red); }
+
+/* Progress */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--green));
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+.progress-text {
+  font-size: 13px;
+  color: var(--text2);
+  text-align: center;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.stat-card {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .value {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-card .label {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+/* Result list */
+.result-list { list-style: none; }
+.result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg3);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.result-item .info { display: flex; align-items: center; gap: 12px; flex: 1; }
+.result-item .name { font-weight: 600; }
+.result-item .meta { font-size: 12px; color: var(--text2); }
+.result-item .actions { display: flex; gap: 6px; }
+
+/* Script viewer */
+.script-viewer {
+  background: var(--bg3);
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  border: 1px solid var(--border);
+}
+
+/* Audio player */
+.audio-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg3);
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+.audio-item audio { flex: 1; height: 36px; }
+.audio-item .size { font-size: 11px; color: var(--text2); white-space: nowrap; }
+
+/* Loading */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px;
+  color: var(--text2);
+}
+.spinner {
+  width: 20px; height: 20px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Genre detail */
+.genre-detail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.genre-card {
+  background: var(--bg3);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.genre-card:hover { border-color: var(--accent); }
+.genre-card h4 { margin-bottom: 8px; color: var(--accent2); }
+.genre-card p { font-size: 13px; color: var(--text2); margin-bottom: 4px; }
+.genre-card .elements { margin-top: 8px; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+  max-width: 360px;
+}
+.toast.success { border-left: 3px solid var(--green); }
+.toast.error { border-left: 3px solid var(--red); }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text2); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text2);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>&#9889; AI短剧生产系统</h1>
+  <span class="version">v1.0</span>
+</header>
+
+<div class="container">
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('generate')">&#127916; 剧本生成</button>
+    <button class="tab-btn" onclick="switchTab('tts')">&#127911; TTS试听</button>
+    <button class="tab-btn" onclick="switchTab('browse')">&#128193; 浏览输出</button>
+    <button class="tab-btn" onclick="switchTab('genres')">&#128220; 题材库</button>
+  </div>
+
+  <!-- Tab: Generate -->
+  <div id="tab-generate" class="tab-content active">
+    <div class="card">
+      <h3><span class="icon">&#128293;</span> 创作设置</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>题材（可多选）</label>
+          <select id="genre-select" multiple>
+            <option value="">加载中...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>每集集数</label>
+          <input type="number" id="episodes" value="3" min="1" max="30">
+        </div>
+        <div class="form-group">
+          <label>视觉风格</label>
+          <select id="style-select">
+            <option value="cinematic_realistic">电影写实 (cinematic_realistic)</option>
+            <option value="anime">动漫 (anime)</option>
+            <option value="noir">黑色电影 (noir)</option>
+            <option value="webtoon">条漫风 (webtoon)</option>
+            <option value="dark_fantasy">暗黑奇幻 (dark_fantasy)</option>
+            <option value="modern_minimal">现代极简 (modern_minimal)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-primary" onclick="startGenerate()" id="btn-generate">
+            &#128640; 开始生成
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="card" id="progress-card" style="display:none;">
+      <h3><span class="icon">&#128200;</span> 生成进度</h3>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="progress-text" id="progress-text">准备中...</div>
+      <div id="progress-log" style="margin-top:12px; font-size:13px; color:var(--text2); max-height:200px; overflow-y:auto; background:var(--bg); padding:12px; border-radius:8px; font-family:monospace;"></div>
+    </div>
+
+    <!-- Results -->
+    <div class="card" id="generate-results" style="display:none;">
+      <h3><span class="icon">&#10004;</span> 生成结果</h3>
+      <div class="stats-grid" id="stats-grid"></div>
+      <ul class="result-list" id="result-list"></ul>
+    </div>
+  </div>
+
+  <!-- Tab: TTS -->
+  <div id="tab-tts" class="tab-content">
+    <div class="card">
+      <h3><span class="icon">&#127911;</span> TTS 语音合成</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>选择剧本</label>
+          <select id="tts-script-select"><option value="">先浏览输出</option></option></select>
+        </div>
+        <div class="form-group">
+          <label>题材</label>
+          <select id="tts-genre-select"></select>
+        </div>
+        <div class="form-group">
+          <label>集数</label>
+          <input type="number" id="tts-episode" value="1" min="1">
+        </div>
+        <div class="form-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-primary" onclick="startTTS()" id="btn-tts">&#127911; 生成语音</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="tts-results" style="display:none;">
+      <h3><span class="icon">&#127908;</span> 音频文件</h3>
+      <div id="tts-file-list"></div>
+    </div>
+  </div>
+
+  <!-- Tab: Browse -->
+  <div id="tab-browse" class="tab-content">
+    <div class="card">
+      <h3><span class="icon">&#128193;</span> 已生成作品</h3>
+      <button class="btn btn-secondary btn-sm" onclick="loadOutputs()" style="margin-bottom:16px;">&#8635; 刷新</button>
+      <div id="browse-content">
+        <div class="loading"><div class="spinner"></div>加载中...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: Genres -->
+  <div id="tab-genres" class="tab-content">
+    <div class="card">
+      <h3><span class="icon">&#128220;</span> 题材库</h3>
+      <div class="genre-detail" id="genre-detail"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  AI短剧生产系统 v1.0 &mdash; Short Drama Agent by Hermes
+</div>
+
+<script>
+const API = '/api';
+let generateAbort = null;
+
+// Tab switching
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', b.textContent.trim().includes(
+      name === 'generate' ? '剧本' : name === 'tts' ? 'TTS' : name === 'browse' ? '浏览' : '题材'
+    ));
+  });
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'genres') loadGenres();
+  if (name === 'browse') loadOutputs();
+  if (name === 'tts') updateTTSSelects();
+}
+
+// Toast
+function toast(msg, type='success') {
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+// ─── Generate ────────────────────────────────────────────
+
+async function startGenerate() {
+  const sel = document.getElementById('genre-select');
+  const genres = Array.from(sel.selectedOptions).map(o => o.value);
+  const episodes = parseInt(document.getElementById('episodes').value) || 3;
+  const style = document.getElementById('style-select').value;
+
+  if (!genres.length) { toast('请至少选择一个题材', 'error'); return; }
+
+  const btn = document.getElementById('btn-generate');
+  btn.disabled = true;
+  btn.innerHTML = '&#8987; 提交任务...';
+
+  const progCard = document.getElementById('progress-card');
+  const resCard = document.getElementById('generate-results');
+  progCard.style.display = 'block';
+  resCard.style.display = 'none';
+  document.getElementById('progress-log').textContent = '正在提交任务...';
+
+  try {
+    const res = await fetch(API + '/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ genres, episodes, style })
+    });
+    const data = await res.json();
+    const taskId = data.task_id;
+
+    document.getElementById('progress-log').textContent = `任务已提交: ${taskId}`;
+    btn.innerHTML = '&#8987; 生成中...';
+
+    // Poll for completion
+    await pollTask(taskId, btn, resCard);
+    toast('生成完成！');
+  } catch (e) {
+    toast('提交失败: ' + e.message, 'error');
+    btn.disabled = false;
+    btn.innerHTML = '&#128640; 开始生成';
+  }
+}
+
+async function pollTask(taskId: any, btn: any, resCard: any) {
+  const poll = async () => {
+    try {
+      const res = await fetch(API + '/task/' + taskId);
+      const data = await res.json();
+
+      document.getElementById('progress-log').textContent = data.message || '处理中...';
+      document.getElementById('progress-fill').style.width = data.progress + '%';
+      document.getElementById('progress-text').textContent = data.message || '处理中...';
+
+      if (data.status === 'completed') {
+        // Show results
+        const elapsed = ((Date.now() - (data._created_at || Date.now())) / 1000).toFixed(1);
+        const analytics = data.data.analytics;
+        updateProgress(100, `完成！共 ${analytics.total_episodes} 集，耗时 ${analytics.total_time}s`);
+
+        const statsGrid = document.getElementById('stats-grid');
+        statsGrid.innerHTML = `
+          <div class="stat-card"><div class="value">${analytics.series.length}</div><div class="label">题材数</div></div>
+          <div class="stat-card"><div class="value">${analytics.total_episodes}</div><div class="label">总集数</div></div>
+          <div class="stat-card"><div class="value">${analytics.total_time}s</div><div class="label">总耗时</div></div>
+          <div class="stat-card"><div class="value">${analytics.avg_per_episode}s</div><div class="label">平均每集</div></div>
+        `;
+
+        const list = document.getElementById('result-list');
+        list.innerHTML = '';
+        data.data.results.forEach((r: any) => {
+          const li = document.createElement('li');
+          li.className = 'result-item';
+          if (r.error) {
+            li.innerHTML = `<div class="info"><span class="name">${r.genre}</span><span class="tag tag-red">失败</span></div><span class="meta">${r.error}</span>`;
+          } else {
+            const eps = r.episodes_produced || (r.results ? r.results.length : 0);
+            li.innerHTML = `<div class="info"><span class="name">${r.genre}</span><span class="tag tag-green">${eps} 集</span><span class="meta">${r.output_directory || ''}</span></div><div class="actions"><button class="btn btn-secondary btn-sm" onclick="viewGenreScripts('${r.genre}')">查看剧本</button></div>`;
+          }
+          list.appendChild(li);
+        });
+
+        resCard.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '&#128640; 开始生成';
+        return;
+      } else if (data.status === 'failed') {
+        toast(data.message || '生成失败', 'error');
+        updateProgress(0, '失败: ' + (data.message || ''));
+        btn.disabled = false;
+        btn.innerHTML = '&#128640; 开始生成';
+        return;
+      }
+    } catch(e) {
+      // ignore poll errors
+    }
+    setTimeout(poll, 1000);
+  };
+  poll();
+}
+
+function updateProgress(pct, text) {
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = text;
+}
+
+function viewGenreScripts(genre) {
+  // Switch to browse tab and show genre
+  switchTab('browse');
+  document.getElementById('browse-genre-filter').value = genre;
+  loadOutputs();
+}
+
+// ─── TTS ─────────────────────────────────────────────────
+
+async function updateTTSSelects() {
+  try {
+    const res = await fetch(API + '/outputs');
+    const data = await res.json();
+
+    const scriptSel = document.getElementById('tts-script-select');
+    const genreSel = document.getElementById('tts-genre-select');
+    scriptSel.innerHTML = '';
+    genreSel.innerHTML = '';
+
+    data.genres.forEach(g => {
+      const opt = document.createElement('option');
+      opt.value = g.genre;
+      opt.textContent = g.genre + ' (' + g.episodes + '集)';
+      genreSel.appendChild(opt);
+
+      g.episode_details.forEach(ep => {
+        const opt2 = document.createElement('option');
+        opt2.value = 'ep' + String(ep.episode).padStart(3, '0') + '/script.md';
+        opt2.textContent = `ep${ep.episode}: 脚本 ${(ep.script_size/1024).toFixed(1)}KB${ep.has_tts ? ' (有TTS)' : ''}`;
+        scriptSel.appendChild(opt2);
+      });
+    });
+  } catch(e) { console.error('TTS select error:', e); }
+}
+
+async function startTTS() {
+  const scriptPath = document.getElementById('tts-script-select').value;
+  const genre = document.getElementById('tts-genre-select').value;
+  const episode = parseInt(document.getElementById('tts-episode').value) || 1;
+
+  if (!scriptPath || !genre) { toast('请选择剧本和题材', 'error'); return; }
+
+  const btn = document.getElementById('btn-tts');
+  btn.disabled = true;
+  btn.innerHTML = '&#8987; 提交任务...';
+
+  try {
+    const res = await fetch(API + '/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ script_path: scriptPath, genre, episode })
+    });
+    const data = await res.json();
+    const taskId = data.task_id;
+
+    btn.innerHTML = '&#8987; 生成语音中...';
+    document.getElementById('progress-log')?.remove();
+
+    // Poll
+    const poll = async () => {
+      try {
+        const r = await fetch(API + '/task/' + taskId);
+        const d = await r.json();
+        document.getElementById('progress-text').textContent = d.message || '处理中...';
+        if (document.getElementById('progress-fill'))
+          document.getElementById('progress-fill').style.width = d.progress + '%';
+
+        if (d.status === 'completed') {
+          showTTSResults(d.data);
+          btn.disabled = false;
+          btn.innerHTML = '&#127911; 生成语音';
+          toast('TTS 生成完成！');
+          return;
+        } else if (d.status === 'failed') {
+          toast(d.message || 'TTS 失败', 'error');
+          btn.disabled = false;
+          btn.innerHTML = '&#127911; 生成语音';
+          return;
+        }
+      } catch(e) {}
+      setTimeout(poll, 1000);
+    };
+    poll();
+  } catch(e) {
+    toast('TTS 提交失败: ' + e.message, 'error');
+    btn.disabled = false;
+    btn.innerHTML = '&#127911; 生成语音';
+  }
+}
+
+function showTTSResults(data: any) {
+  const list = document.getElementById('tts-file-list');
+  list.innerHTML = `
+    <div style="margin-bottom:12px; color:var(--text2); font-size:13px;">
+      解析到 <strong>${data.dialogue_lines}</strong> 行对话，生成 <strong>${data.audio_files.length}</strong> 个音频文件
+      (总大小 ${(data.total_size/1024).toFixed(0)} KB)
+    </div>`;
+
+  if (data.audio_files.length === 0) {
+    list.innerHTML += '<p style="color:var(--text2)">没有生成音频文件</p>';
+  }
+
+  data.audio_files.forEach((f: any) => {
+    const name = f.path.split('/').pop();
+    const div = document.createElement('div');
+    div.className = 'audio-item';
+    div.innerHTML = `
+      <span style="font-size:12px; min-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${name}</span>
+      <audio controls src="${API}/tts/${encodeURIComponent(f.path)}"></audio>
+      <span class="size">${(f.size/1024).toFixed(1)}KB</span>`;
+    list.appendChild(div);
+  });
+
+  document.getElementById('tts-results').style.display = 'block';
+}
+
+// ─── Browse ──────────────────────────────────────────────
+
+async function loadOutputs() {
+  const container = document.getElementById('browse-content');
+  container.innerHTML = '<div class="loading"><div class="spinner"></div>加载中...</div>';
+
+  try {
+    const res = await fetch(API + '/outputs');
+    const data = await res.json();
+
+    if (!data.genres.length) {
+      container.innerHTML = '<p style="color:var(--text2); text-align:center; padding:40px;">暂无已生成的作品。去「剧本生成」页创建一些吧！</p>';
+      return;
+    }
+
+    let html = '';
+    data.genres.forEach(g => {
+      html += `<div class="card" style="margin-bottom:20px;">
+        <h3><span class="icon">&#127916;</span> ${g.genre} <span class="tag tag-purple">${g.episodes}集</span> <span class="tag tag-green">${g.characters}角色</span></h3>`;
+
+      g.episode_details.forEach(ep => {
+        html += `<div class="result-item" style="margin-bottom:6px;">
+          <div class="info">
+            <span class="name">第${ep.episode}集</span>
+            <span class="meta">脚本 ${Math.round(ep.script_size/1024)}KB</span>
+            ${ep.audio_files ? `<span class="tag tag-green">${ep.audio_files} 音频</span>` : ''}
+            ${ep.has_tts ? '<span class="tag tag-orange">已TTS</span>' : ''}
+          </div>
+          <div class="actions">
+            <button class="btn btn-secondary btn-sm" onclick="viewScript('${g.genre}', ${ep.episode})">查看</button>
+            <a class="btn btn-secondary btn-sm" href="${API}/script/ep${String(ep.episode).padStart(3,'0')}/script.md" download>下载</a>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+    });
+    container.innerHTML = html;
+  } catch(e) {
+    container.innerHTML = '<p style="color:var(--red); text-align:center;">加载失败: ' + e.message + '</p>';
+  }
+}
+
+async function viewScript(genre, episode) {
+  const path = `ep${String(episode).padStart(3, '0')}/script.md`;
+  try {
+    const res = await fetch(API + `/script/${encodeURIComponent(path)}/text`);
+    const data = await res.json();
+    const viewer = document.createElement('div');
+    viewer.className = 'script-viewer';
+    viewer.textContent = data.content;
+
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+
+    const card = document.createElement('div');
+    card.style.cssText = 'background:var(--bg2);border-radius:var(--radius);max-width:900px;width:100%;max-height:80vh;overflow:auto;';
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border);">
+        <h3 style="margin:0;">${genre} - 第${episode}集</h3>
+        <button class="btn btn-secondary btn-sm" onclick="this.closest('div').parentElement.parentElement.remove()">关闭</button>
+      </div>`;
+    card.appendChild(viewer);
+    overlay.appendChild(card);
+    document.body.appendChild(overlay);
+  } catch(e) {
+    toast('加载失败: ' + e.message, 'error');
+  }
+}
+
+// ─── Genres ──────────────────────────────────────────────
+
+async function loadGenres() {
+  try {
+    const res = await fetch(API + '/genres');
+    const data = await res.json();
+    const container = document.getElementById('genre-detail');
+    container.innerHTML = '';
+
+    for (const [name, info] of Object.entries(data)) {
+      const card = document.createElement('div');
+      card.className = 'genre-card';
+      card.innerHTML = `
+        <h4>${name}</h4>
+        <p>${info.description}</p>
+        <p style="color:var(--text2);">目标受众: ${info.target_audience}</p>
+        <div class="elements">${info.key_elements.map(e => `<span class="tag tag-purple">${e}</span>`).join('')}</div>
+      `;
+      container.appendChild(card);
+    }
+  } catch(e) {
+    document.getElementById('genre-detail').innerHTML = '<p style="color:var(--red);">加载失败</p>';
+  }
+}
+
+// ─── Init ────────────────────────────────────────────────
+
+async function init() {
+  // Load genres into select
+  try {
+    const res = await fetch(API + '/genres');
+    const data = await res.json();
+    const sel = document.getElementById('genre-select');
+    sel.innerHTML = '';
+    for (const name of Object.keys(data).sort()) {
+      const opt = document.createElement('option');
+      opt.value = name;
+      opt.textContent = name;
+      sel.appendChild(opt);
+    }
+  } catch(e) {
+    document.getElementById('genre-select').innerHTML = '<option>加载失败</option>';
+  }
+
+  // Load styles
+  try {
+    const res = await fetch(API + '/styles');
+    const sel = document.getElementById('style-select');
+    sel.innerHTML = '';
+    res.data.styles.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s;
+      opt.textContent = s;
+      if (s === 'cinematic_realistic') opt.selected = true;
+      sel.appendChild(opt);
+    });
+  } catch(e) {}
+
+  loadOutputs();
+}
+
+init();
+</script>
+</body>
+</html>

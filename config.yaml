@@ -1,0 +1,92 @@
+# Short Drama Agent - Global Configuration
+
+# ==================== LLM Configuration ====================
+llm:
+  # Default LLM provider (agnes / openai / anthropic)
+  provider: "agnes"
+  model: "agnes-2.0-flash"
+  api_key: "sk-CxwgwMhzNS9G0VbrB1MKl6VooVVkgmSCMkEIjhcB4kP6vq2X"   # Agnes AI API Key
+  # Or set env var: export AGNES_API_KEY="your-key"
+  base_url: "https://apihub.agnes-ai.com/v1"
+  temperature: 0.85
+  max_tokens: 8192
+
+  # For script quality (higher temperature)
+  script_model: "agnes-2.0-flash"
+  script_temperature: 0.9
+
+  # For analysis (lower temperature)
+  analysis_model: "agnes-2.0-flash"
+  analysis_temperature: 0.3
+
+# ==================== ComfyUI Configuration ====================
+comfyui:
+  host: "127.0.0.1"
+  port: 8188
+  timeout: 900           # seconds (long for video workflows)
+  max_concurrent: 2
+
+  # Model settings
+  default_checkpoint: ""  # e.g. "flux1-dev-fp8.safetensors"
+  preferred_steps: 20
+  preferred_cfg: 7.0
+  preferred_width: 576
+  preferred_height: 1024  # 9:16 portrait for short drama
+
+# ==================== TTS Configuration ====================
+tts:
+  engine: "edge-tts"     # edge-tts / chattts
+  voice_male: "zh-CN-YunxiNeural"
+  voice_female: "zh-CN-XiaoxiaoNeural"
+  voice_young_male: "zh-CN-YunyangNeural"
+  voice_young_female: "zh-CN-XiaoyiNeural"
+  voice_elderly_male: "zh-CN-LaomsUnNeural"
+  rate: "+0%"            # speech rate
+
+# ==================== Video Processing ====================
+video:
+  fps: 24
+  duration_per_shot: 4   # seconds per shot/image
+  resolution_width: 1080
+  resolution_height: 1920  # 9:16 vertical
+  subtitle_font_size: 36
+  subtitle_margin: 20
+  default_transition: "fade"  # fade / zoom / pan
+  transition_duration: 0.5  # seconds
+  watermark:
+    enabled: false
+    text: ""
+    position: "bottom-right"
+
+# ==================== Publishing ====================
+publishing:
+  platforms:
+    douyin:
+      enabled: false
+      cookie: ""
+    kuaishou:
+      enabled: false
+      cookie: ""
+    wechat_video:
+      enabled: false
+      cookie: ""
+    youtube_shorts:
+      enabled: false
+      api_key: "sk-CxwgwMhzNS9G0VbrB1MKl6VooVVkgmSCMkEIjhcB4kP6vq2X"
+  auto_publish: false
+  post_copy_length: 100  # chars for social media description
+
+# ==================== Content Settings ====================
+content:
+  episodes_per_series: 80   # default number of episodes
+  duration_per_episode: 180  # seconds (3 minutes)
+  scenes_per_episode: 5      # target scenes per episode
+  lines_per_episode: 700     # target word count
+
+# ==================== Paths ====================
+paths:
+  output_dir: "output"
+  knowledge_base: "knowledge_base"
+  templates: "templates"
+  workflows: "workflows"
+  logs: "logs"

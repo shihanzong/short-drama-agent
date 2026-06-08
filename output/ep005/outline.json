@@ -1,0 +1,56 @@
+{
+  "title": "第5集：废墟上的女王",
+  "logline": "顾延之陷入绝境，沈清秋完成终极复仇，重塑沈氏帝国，留下开放式结局。",
+  "scenes": [
+    {
+      "scene_number": 1,
+      "location": "悬崖公路",
+      "time_of_day": "夜晚",
+      "summary": "车子在悬崖边剧烈震动，顾延之惊恐地看着沈清秋淡定地走出车外，居高临下地看着他。沈清秋：“这是你前世给我的‘礼物’，我原封奉还。”",
+      "characters_present": [
+        "沈清秋",
+        "顾延之"
+      ],
+      "emotional_tone": "快意/冷酷",
+      "duration_seconds": 40
+    },
+    {
+      "scene_number": 2,
+      "location": "沈氏集团顶层办公室",
+      "time_of_day": "白天",
+      "summary": "沈清秋站在落地窗前，俯瞰城市。新闻报道顾延之涉嫌多项经济犯罪及故意杀人罪被捕，顾氏破产清算。林婉儿因包庇罪入狱。",
+      "characters_present": [
+        "沈清秋",
+        "助理"
+      ],
+      "emotional_tone": "宁静/胜利",
+      "duration_seconds": 35
+    },
+    {
+      "scene_number": 3,
+      "location": "监狱探视室",
+      "time_of_day": "白天",
+      "summary": "沈清秋隔着玻璃见顾延之。顾延之癫狂地质问她为何如此狠毒。沈清秋微笑：“温柔是伪装的，冷血才是我的本性。顾延之，游戏结束了。”",
+      "characters_present": [
+        "沈清秋",
+        "顾延之"
+      ],
+      "emotional_tone": "释然/蔑视",
+      "duration_seconds": 45
+    },
+    {
+      "scene_number": 4,
+      "location": "沈氏集团新大楼天台",
+      "time_of_day": "黄昏",
+      "summary": "沈清秋独自站在天台，风吹起她的长发。她拿出手机，删除了所有复仇相关的加密文件。镜头拉远，她的身影孤独而强大。",
+      "characters_present": [
+        "沈清秋"
+      ],
+      "emotional_tone": "苍凉/新生",
+      "duration_seconds": 30
+    }
+  ],
+  "cliffhanger": "沈清秋的手机震动，一条匿名短信弹出：“你以为这就结束了吗？你父亲当年的死，另有隐情。”屏幕黑下，只余心跳声。",
+  "hook_score": 9,
+  "episode_number": 5
+}

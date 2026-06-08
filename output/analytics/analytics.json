@@ -1,0 +1,38 @@
+{
+  "重生复仇": {
+    "id": "重生复仇",
+    "title": "重生复仇",
+    "genre": "重生复仇",
+    "episodes": 3,
+    "platforms": [
+      "douyin"
+    ],
+    "created_at": "2026-06-08T01:24:24.735865",
+    "metrics": {},
+    "episode_metrics": {}
+  },
+  "甜宠": {
+    "id": "甜宠",
+    "title": "甜宠",
+    "genre": "甜宠",
+    "episodes": 3,
+    "platforms": [
+      "douyin"
+    ],
+    "created_at": "2026-06-08T03:12:41.747885",
+    "metrics": {},
+    "episode_metrics": {}
+  },
+  "霸总": {
+    "id": "霸总",
+    "title": "霸总",
+    "genre": "霸总",
+    "episodes": 2,
+    "platforms": [
+      "douyin"
+    ],
+    "created_at": "2026-06-08T01:32:22.198892",
+    "metrics": {},
+    "episode_metrics": {}
+  }
+}

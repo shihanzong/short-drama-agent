@@ -1,0 +1,25 @@
+{
+  "episode_number": 0,
+  "title": "",
+  "total_duration_seconds": 180,
+  "scenes": [
+    {
+      "scene_number": 1,
+      "slug_line": "INT. LOCATION - TIME",
+      "location": "",
+      "time_of_day": "day/night",
+      "description": "",
+      "dialogues": [
+        {
+          "character": "",
+          "line": "",
+          "emotion": "",
+          "direction": ""
+        }
+      ],
+      "actions": [],
+      "duration_seconds": 30
+    }
+  ],
+  "notes": ""
+}

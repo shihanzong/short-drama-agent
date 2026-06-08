@@ -1,0 +1,14 @@
+{
+  "description": "Image-to-video generation workflow (Wan/Hunyuan)",
+  "nodes": {},
+  "inputs": {
+    "input_image": "keyframe image",
+    "prompt": "motion description",
+    "seed": -1,
+    "frames": 61,
+    "fps": 16
+  },
+  "outputs": [
+    "video"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Upscale final video outputs",
+  "nodes": {},
+  "inputs": {
+    "video_input": "input video",
+    "scale_factor": 2.0
+  },
+  "outputs": [
+    "video"
+  ]
+}

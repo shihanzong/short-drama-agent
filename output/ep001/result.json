@@ -1,0 +1,11 @@
+{
+  "episode": 1,
+  "genre": "甜宠",
+  "outline_path": "output\\ep001\\outline.json",
+  "script_path": "output\\ep001\\script.md",
+  "storyboard_path": "output\\ep001\\storyboard.json",
+  "images_dir": "output\\ep001\\images",
+  "audio_files": [],
+  "video_path": "",
+  "publishing": {}
+}
