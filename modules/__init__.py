@@ -6,6 +6,9 @@ from modules.tts_engine import TTSEngine
 from modules.video_processor import VideoProcessor
 from modules.style_manager import StyleManager
 from modules.analytics import AnalyticsEngine
+from modules.voice_to_text import VoiceToTextEngine, TranscriptionResult
+from modules.tts_engine import TTSEngine, CHINESE_VOICES
+from modules.voice_interact import VoiceInteractionEngine, VoiceMessage
 
 __all__ = [
     "LLMClient",
@@ -14,4 +17,9 @@ __all__ = [
     "VideoProcessor",
     "StyleManager",
     "AnalyticsEngine",
+    "VoiceToTextEngine",
+    "TranscriptionResult",
+    "CHINESE_VOICES",
+    "VoiceInteractionEngine",
+    "VoiceMessage",
 ]

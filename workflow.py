@@ -206,6 +206,7 @@ class ShortDramaWorkflow:
         skip_visual: bool = False,
         skip_audio: bool = False,
         skip_publish: bool = False,
+        quick_mode: bool = False,
     ) -> Dict:
         """Run the full pipeline for a single episode.
 
