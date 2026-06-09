@@ -98,6 +98,16 @@ class ShortDramaWorkflow:
         os.makedirs(episode_dir, exist_ok=True)
         return episode_dir
 
+    def _create_episode_dir_with_genre(self, genre: str, episode_num: int) -> str:
+        """Create output directory under genre subdirectory for organized output."""
+        # Use runtime output_base if set (from run_series), else fall back to config
+        output_base = getattr(self, "_runtime_output_base", None)
+        if not output_base:
+            output_base = self.config.get("paths", {}).get("output_dir", "output")
+        episode_dir = os.path.join(output_base, f"ep{episode_num:03d}")
+        os.makedirs(episode_dir, exist_ok=True)
+        return episode_dir
+
 
     # ===== Kanban Workflow Handlers =====
     def _kanban_script_handler(self, task):
@@ -224,7 +234,7 @@ class ShortDramaWorkflow:
         """
         self.drama_id = f"{genre}_ep{episode_number}"
         self.genre = genre
-        episode_dir = self._create_episode_dir(episode_number)
+        episode_dir = self._create_episode_dir_with_genre(genre, episode_number)
 
         print(f"\n{'='*50}")
         print(f"  PRODUCING EPISODE {episode_number}")
@@ -396,6 +406,8 @@ class ShortDramaWorkflow:
         self.genre = genre
         output_base = os.path.join(output_base, genre)
         os.makedirs(output_base, exist_ok=True)
+        # Store output_base so _create_episode_dir_with_genre uses it
+        self._runtime_output_base = output_base
 
         print(f"\n{'#'*60}")
         print(f"# SHORT DRAMA PRODUCTION: {genre}")
